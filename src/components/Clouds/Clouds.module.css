@@ -1,0 +1,35 @@
+.cloudsLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.cloudWrap {
+  position: absolute;
+  left: 0;
+  width: 160px;
+  height: auto;
+  color: #fff;
+  will-change: transform;
+  animation-name: drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.cloudShape {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.06));
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(110vw) scale(var(--cloud-scale, 1));
+  }
+  to {
+    transform: translateX(-50vw) scale(var(--cloud-scale, 1));
+  }
+}

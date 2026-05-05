@@ -5,6 +5,7 @@ import { programs } from '../../data/programs';
 import { useTheme } from '../../theme/ThemeContext';
 import { useDragRotate } from '../../hooks/useDragRotate';
 import { Wheel } from './Wheel';
+import { Clouds } from '../Clouds/Clouds';
 import s from './Hero.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -84,7 +85,7 @@ export function Hero() {
     tl.to(
       cardStackRef.current,
       {
-        y: '-20vh',
+        y: '-32vh',
         duration: 0.25,
         ease: 'none',
       },
@@ -155,6 +156,8 @@ export function Hero() {
       <p className={s.tapHint}>Tap into a service to explore</p>
 
       <div className={s.stage}>
+        <Clouds />
+
         <div className={s.triangleClip}>
           <Wheel ref={wheelRef} />
         </div>
