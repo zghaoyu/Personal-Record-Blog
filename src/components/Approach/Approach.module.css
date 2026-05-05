@@ -1,0 +1,63 @@
+.section {
+  background-color: var(--triangle);
+  color: var(--text-on-bg);
+  padding: 120px 24px;
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+.header {
+  max-width: 760px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+
+.headline {
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.05;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  backdrop-filter: blur(2px);
+}
+
+.icon {
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.cardBody {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}

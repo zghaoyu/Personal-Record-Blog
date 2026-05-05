@@ -1,0 +1,258 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  background-color: var(--bg);
+  transition: background-color 0.6s ease;
+  overflow: hidden;
+}
+
+.tapHint {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+  color: var(--text-on-bg);
+  opacity: 0.7;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+/* The stage is a fixed-aspect playground that holds the triangle, the arrows,
+   and the CTA card. Everything inside is positioned relative to it. */
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-height: 1200px;
+  margin: 0 auto;
+}
+
+/* Triangle viewport: only the top sector of the wheel shows through. */
+.triangleClip {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  overflow: hidden;
+}
+
+/* The wheel is a giant circle whose center sits at the TOP-CENTER of the
+   stage (the apex of the triangle viewport). Sectors fan out downward.
+   Width > triangle width so each 90° sector still fully covers it. */
+.wheel {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 300%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, 70%);
+  transform-origin: 50% 50%;
+  cursor: grab;
+}
+
+.wheel:active {
+  cursor: grabbing;
+}
+
+/* Each sector is a 90° pie slice (drawn as a triangle), pointing downward
+   from the wheel center to the wheel's bottom edge. Sectors rotate by i*90°
+   so 4 of them cover the entire wheel without gaps. The wheel rotation
+   then determines which sector appears at the bottom (in the viewport). */
+.wheelSection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 0% 0%, 100% 0%);
+  -webkit-clip-path: polygon(50% 50%, 0% 0%, 100% 0%);
+  transform-origin: 50% 50%;
+}
+
+.debugBadge {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  z-index: 10;
+  pointer-events: none;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+.placeholder {
+  position: absolute;
+  top: 71%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.emoji {
+  font-size: clamp(96px, 14vw, 220px);
+  line-height: 1;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+.slideTitle {
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+/* Arrow buttons */
+.arrow {
+  position: absolute;
+  bottom: 12%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--text-on-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease;
+  z-index: 5;
+}
+
+.arrow:hover {
+  transform: translateY(-2px);
+}
+
+.arrowPrev {
+  left: 8%;
+}
+
+.arrowNext {
+  right: 8%;
+}
+
+/* Pin container holds the card stack and gets pinned by ScrollTrigger */
+.pinContainer {
+  position: absolute;
+  bottom: -24%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.cardStack {
+  position: relative;
+  width: 532px;
+  height: 532px;
+  perspective: 1000px;
+}
+
+.stackCard {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: background-color 0.6s ease, color 0.6s ease;
+  padding: 28px;
+  overflow: hidden;
+}
+
+/* Brief layer: shown on the small card at the bottom */
+.cardBrief {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Detail layer: shown after card scales up to center */
+.cardDetail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  opacity: 0;
+}
+
+.cardTitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(18px, 2.2vw, 30px);
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.cardEmoji {
+  font-size: clamp(48px, 7vw, 90px);
+  line-height: 1;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.cardDesc {
+  font-size: clamp(12px, 1.4vw, 16px);
+  line-height: 1.5;
+  max-width: 300px;
+  font-weight: 500;
+}
+
+.ctaTitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(18px, 2vw, 28px);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.ctaSub {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7);
+  color: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+@media (max-width: 720px) {
+  .stage {
+    height: 60vh;
+  }
+  .arrowPrev {
+    left: 4%;
+  }
+  .arrowNext {
+    right: 4%;
+  }
+  .cardStack {
+    width: 364px;
+    height: 364px;
+  }
+}

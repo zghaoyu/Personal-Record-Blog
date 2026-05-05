@@ -1,0 +1,109 @@
+.section {
+  background-color: var(--bg);
+  color: var(--text-on-bg);
+  padding: 80px 24px 120px;
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.headline {
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.intro {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 28px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card.active {
+  outline: 4px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardBtn {
+  width: 100%;
+  height: 100%;
+  padding: 28px 24px 32px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.cardBtn:hover {
+  filter: brightness(1.04);
+}
+
+.cardEmoji {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.cardStatus {
+  align-self: flex-start;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.cardAge {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.85;
+}

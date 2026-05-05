@@ -1,0 +1,38 @@
+.section {
+  background-color: var(--bg);
+  color: var(--text-on-bg);
+  padding: 120px 24px 80px;
+  text-align: center;
+  transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+.eyebrow {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 28px;
+}
+
+.headline {
+  font-size: clamp(36px, 6vw, 88px);
+  line-height: 1.05;
+  max-width: 1100px;
+  margin: 0 auto 36px;
+}
+
+.em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.lede {
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.5;
+  max-width: 720px;
+  margin: 0 auto;
+  font-weight: 500;
+  opacity: 0.8;
+}

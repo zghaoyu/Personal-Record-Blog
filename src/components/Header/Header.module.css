@@ -1,0 +1,143 @@
+.header {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  pointer-events: none; /* re-enable on inner clickables so the wheel below can still get drag */
+}
+
+.header > * {
+  pointer-events: auto;
+}
+
+/* Logo on the left, hugging the page edge */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--text-on-bg);
+}
+
+.logoMark {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+
+.logoDot {
+  position: absolute;
+  width: 11px;
+  height: 16px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: var(--accent);
+}
+
+.logoDot:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform: rotate(-12deg);
+}
+
+.logoDot:nth-child(2) {
+  top: 0;
+  right: 0;
+  transform: rotate(12deg);
+}
+
+.logoText {
+  letter-spacing: -0.04em;
+}
+
+/* Center navigation in a white pill */
+.navWrap {
+  margin-left: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.navItem {
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1f1235;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease;
+}
+
+.navItem:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.caret {
+  font-size: 0.7em;
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+/* Donate + mail */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.donate {
+  background: var(--accent);
+  color: #fff;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.donate:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.mailBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-on-bg);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease;
+}
+
+.mailBtn:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 880px) {
+  .nav {
+    display: none;
+  }
+  .navWrap {
+    margin-left: auto;
+  }
+}
