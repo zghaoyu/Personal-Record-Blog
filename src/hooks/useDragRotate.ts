@@ -7,7 +7,7 @@ interface Options {
   initialIndex?: number;
 }
 
-const DRAG_SENSITIVITY = 0.05; // degrees per pixel
+const DRAG_SENSITIVITY = 0.1; // degrees per pixel
 
 export function useDragRotate<T extends HTMLElement>({
   onSnap,

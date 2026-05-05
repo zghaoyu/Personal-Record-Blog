@@ -121,10 +121,16 @@ export function Hero() {
       0.25
     );
 
-    // Phase 3 (40-70%): Cards fly upward one by one
-    cards.forEach((card, i) => {
+    // Phase 3 (40-70%): Cards fly upward one by one, top-to-bottom order
+    const cardEntries = Array.from(cards).map((card) => ({
+      card,
+      zIndex: parseInt(window.getComputedStyle(card).zIndex, 10) || 0,
+    }));
+    cardEntries.sort((a, b) => b.zIndex - a.zIndex);
+
+    cardEntries.forEach((entry, sortedIndex) => {
       tl.to(
-        card,
+        entry.card,
         {
           y: '-120vh',
           rotation: `+=${(Math.random() - 0.5) * 30}`,
@@ -132,7 +138,7 @@ export function Hero() {
           duration: 0.1,
           ease: 'power2.in',
         },
-        0.4 + i * 0.08
+        0.4 + sortedIndex * 0.08
       );
     });
 
