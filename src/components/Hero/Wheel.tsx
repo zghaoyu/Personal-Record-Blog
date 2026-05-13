@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { programs } from '../../data/programs';
 import { SlideContent } from './SlideContent';
+import { CursorReveal } from './CursorReveal';
 import s from './Hero.module.css';
 
 /**
@@ -17,7 +18,18 @@ export const Wheel = forwardRef<HTMLDivElement>(function Wheel(_props, ref) {
           className={s.wheelSection}
           style={{ transform: `translate(-50%, -50%) rotate(${i * 90}deg)` }}
         >
-          <SlideContent program={p} index={i} />
+          {i === 0 ? (
+            <CursorReveal
+              baseText="你好"
+              revealText="Hello"
+              baseBg={p.theme.triangle}
+              revealBg="#ffd24c"
+              baseTextColor="#ffffff"
+              revealTextColor="#0a0a0a"
+            />
+          ) : (
+            <SlideContent program={p} index={i} />
+          )}
         </div>
       ))}
     </div>

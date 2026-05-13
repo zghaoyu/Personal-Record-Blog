@@ -1,0 +1,91 @@
+.cursorReveal {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: none;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.revealLayer {
+  will-change: clip-path;
+}
+
+.contentWrap {
+  position: absolute;
+  top: 19%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.revealContent {
+  font-size: clamp(28px, 5vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Sun / Moon emoji fixed at upper-left of the text */
+.sunEmojiFixed {
+  font-size: clamp(48px, 7vw, 90px);
+  line-height: 1;
+  margin-right: auto;
+  margin-bottom: 4px;
+  transform: translate(-250%, -180%);
+  filter: drop-shadow(0 4px 12px rgba(255, 180, 0, 0.4));
+}
+
+/* Clouds wrapping the text */
+.cloud {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.cloudLeft {
+  left: -90px;
+  top: 50%;
+  transform: translateY(-50%) scale(1.2);
+  animation: driftLeft 4s ease-in-out infinite;
+}
+
+.cloudRight {
+  right: -90px;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  animation: driftRight 5s ease-in-out infinite;
+}
+
+.cloudTop {
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%) scale(0.9);
+  animation: driftTop 6s ease-in-out infinite;
+}
+
+@keyframes driftLeft {
+  0%, 100% { transform: translateY(-50%) scale(1.2) translateX(0); }
+  50% { transform: translateY(-50%) scale(1.2) translateX(-28px); }
+}
+
+@keyframes driftRight {
+  0%, 100% { transform: translateY(-50%) scale(1) translateX(0); }
+  50% { transform: translateY(-50%) scale(1) translateX(28px); }
+}
+
+@keyframes driftTop {
+  0%, 100% { transform: translateX(-50%) scale(0.9) translateY(0); }
+  50% { transform: translateX(-50%) scale(0.9) translateY(-18px); }
+}
